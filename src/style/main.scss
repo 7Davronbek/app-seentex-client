@@ -461,6 +461,10 @@ body {
         .swiper-pagination-bullet {
             background-color: #252C58;
         }
+
+        @media(max-width: 767px) {
+            height: inherit;
+        }
     }
 
 }
@@ -930,7 +934,7 @@ body {
         }
 
         @media(max-width:650px) {
-            height: 80vh;
+            height: auto;
         }
     }
 
@@ -988,6 +992,10 @@ body {
         @media(max-width:400px) {
             margin-bottom: 10px;
         }
+    }
+
+    @media(max-width: 767px) {
+        margin-top: 0;
     }
 }
 
@@ -1573,5 +1581,15 @@ body {
 
     .swiper3 {
         cursor: grab;
+    }
+}
+
+.swiper {
+
+    &.swiper-fade {
+
+        @media(max-width: 767px) {
+            padding-top: 73px;
+        }
     }
 }

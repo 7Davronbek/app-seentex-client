@@ -548,6 +548,12 @@ body {
   background-color: #252C58;
 }
 
+@media (max-width: 767px) {
+  .header .slider {
+    height: inherit;
+  }
+}
+
 .section {
   background-color: white;
 }
@@ -1109,7 +1115,7 @@ body {
 
 @media (max-width: 650px) {
   .about .video {
-    height: 80vh;
+    height: auto;
   }
 }
 
@@ -1183,6 +1189,12 @@ body {
 @media (max-width: 400px) {
   .about .about_box_text {
     margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about {
+    margin-top: 0;
   }
 }
 
@@ -1900,5 +1912,11 @@ body {
 .companies .swiper3 {
   cursor: -webkit-grab;
   cursor: grab;
+}
+
+@media (max-width: 767px) {
+  .swiper.swiper-fade {
+    padding-top: 73px;
+  }
 }
 /*# sourceMappingURL=main.css.map */
