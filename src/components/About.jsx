@@ -4,12 +4,12 @@ const About = () => {
     return (
         <>
 
-            <div class="about">
-                <div class="container">
-                    <div class="about_box_h">О НАШЕЙ КОМПАНИИ SEENTEX</div>
-                    <div class="about_box pb-5">
-                        <div class="row mt-lg-5 justify-content-between align-items-center">
-                            <div class="col-lg-5 about_box_text">
+            <div className="about">
+                <div className="container">
+                    <div className="about_box_h">О НАШЕЙ КОМПАНИИ SEENTEX</div>
+                    <div className="about_box pb-5">
+                        <div className="row mt-lg-5 justify-content-between align-items-center">
+                            <div className="col-lg-5 about_box_text">
                                 "SEENTEX" гроуп образовалась в 2022 году и поставляет сантехнику
                                 по всему Узбекистану под брендом "SEENTEX". На основании договоров
                                 с самыми известными предприятиями КНР поставляет нашему народу
@@ -21,7 +21,7 @@ const About = () => {
                                 расширении ассортимента сантехнической продукции и удовлетворении
                                 населения путем обеспечения его качественными товарами.
                             </div>
-                            <div class="col-lg-7">
+                            <div className="col-lg-7">
                                 <video className='video'
                                     autoPlay
                                     loop
