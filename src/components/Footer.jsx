@@ -60,6 +60,16 @@ const Footer = () => {
                 </div>
             </div>
 
+            <div className="koko">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <a rel="noreferrer" target={'_blank'} href='https://kokoagency.uz/'>Created by KoKo digital agency. All rights reserved.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }

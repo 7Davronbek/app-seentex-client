@@ -1307,11 +1307,12 @@ body {
 
 }
 
-.koko {
+.koko { 
     background: white;
+    text-align: center;
+    padding: 16px 0;
 
-    h2 {
-        padding: 16px 0;
+    a {
         font-size: 18px;
         color: #252C58;
         text-align: center;
