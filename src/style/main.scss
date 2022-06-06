@@ -175,8 +175,6 @@ body {
 }
 
 
-
-
 .header {
     height: 100%;
     width: 100%;
@@ -738,13 +736,21 @@ body {
 
 }
 
-
 .sertificat {
     padding: 50px 0;
     height: 100%;
 
     @media (max-width: 550px) {
         padding-top: 0;
+    }
+
+    .swiper-slide {
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     .ser_box_1 {
