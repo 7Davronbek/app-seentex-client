@@ -13,11 +13,21 @@ const Companies = () => {
                 <div className="companies_text">Нам доверяют</div>
 
                 <Swiper
-                    slidesPerView={6}
                     loop={true}
                     spaceBetween={30}
                     pagination={{
                         clickable: true,
+                    }}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 2,
+                        },
+                        767: {
+                            slidesPerView: 3,
+                        },
+                        993: {
+                            slidesPerView: 6,
+                        },
                     }}
                     autoplay={{
                         delay: 500,
