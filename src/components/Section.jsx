@@ -20,6 +20,7 @@ const Section = () => {
                                     colors="primary:#252c58,secondary:#000000"
                                     stroke="65"
                                     className="icons"
+                                    style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
                                 <p>ОПТИМАЛЬНОЕ СООТНОШЕНИЕ ЦЕНЫ И КАЧЕСТВА ТОВАРА.</p>
@@ -31,6 +32,7 @@ const Section = () => {
                                     colors="primary:#252c58,secondary:#000000"
                                     stroke="70"
                                     className="icons"
+                                    style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
                                 <p>100% КАЧЕСТВeнные и безопасные ТОВАРы.</p>
@@ -42,6 +44,7 @@ const Section = () => {
                                     delay="550"
                                     colors="primary:#252c58,secondary:#000000"
                                     className="icons"
+                                    style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
                                 <p>международный Компаний сотрудничают с нами</p>
@@ -54,6 +57,7 @@ const Section = () => {
                                     colors="primary:#252c58,secondary:#000000"
                                     stroke="70"
                                     className="icons"
+                                    style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
                                 <p>есть призы нашим постоянным клиентам</p>
