@@ -1,4 +1,5 @@
 import React from "react";
+import About from "./components/About";
 import Header from "./components/Header";
 import SocialFixed from "./components/SocialFixed";
 
@@ -7,6 +8,7 @@ const App = () => {
     <>
       <SocialFixed />
       <Header />
+      <About />
     </>
   );
 };

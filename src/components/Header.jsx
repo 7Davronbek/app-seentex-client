@@ -1,4 +1,14 @@
 import React from 'react'
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import {
+    EffectFade, Navigation, Autoplay
+} from "swiper";
 
 const Header = () => {
     return (
@@ -46,14 +56,41 @@ const Header = () => {
                         </div>
 
                         <div className="swiper mySwiper">
-                            <div className="swiper-wrapper">
+                            <Swiper
+                                spaceBetween={30}
+                                effect={"fade"}
+                                navigation={true}
+                                loop={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
+                                autoplay={{
+                                    delay: 2500,
+                                    disableOnInteraction: false,
+                                }}
+                                modules={[EffectFade, Navigation, Autoplay]}
+                                className="mySwiper"
+                            >
+                                <SwiperSlide>
+                                    <img src="/images/swip_2.jpg" alt="" />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img src="/images/swip_1.jpg" alt="" />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <img src="/images/swip_2.jpg" alt="" />
+                                </SwiperSlide>
+                            </Swiper>
+
+
+                            {/* <div className="swiper-wrapper">
                                 <div className="swiper-slide"><img src="./images/swip_2.jpg" alt="" /></div>
                                 <div className="swiper-slide"><img src="./images/swip_1.jpg" alt="" /></div>
                                 <div className="swiper-slide"><img src="./images/swip_2.jpg" alt="" /></div>
                             </div>
                             <div className="swiper-button-next"></div>
                             <div className="swiper-button-prev"></div>
-                            <div className="swiper-pagination"></div>
+                            <div className="swiper-pagination"></div> */}
                         </div>
 
 
