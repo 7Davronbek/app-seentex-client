@@ -17,7 +17,7 @@ const Header = () => {
                 <div className="box">
                     <div className="container">
                         <div className="row navbar ">
-                            <div className="col-4 overflow-hidden">
+                            <div className="col-4">
                                 <div className="spinner">
                                     <span><img src="./images/logo_org.png" alt="" /></span>
                                     <span>S</span>
