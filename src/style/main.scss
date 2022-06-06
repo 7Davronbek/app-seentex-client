@@ -8,7 +8,9 @@ body {
     font-family: 'Pacifico', cursive;
 }
 
-
+#root {
+    overflow-x: hidden;
+}
 
 .loading {
 
@@ -45,6 +47,8 @@ body {
             width: 150px;
             margin-right: 1rem;
         }
+
+
     }
 
     .spinner span {
@@ -204,6 +208,10 @@ body {
                 height: 50px;
                 margin-right: 12px;
             }
+
+            @media(max-width:992px) {
+                margin: auto;
+            }
         }
 
         .spinner span {
@@ -282,14 +290,20 @@ body {
         }
 
 
-        .head_1 a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
+        .head_1 {
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
 
-            @media(max-width:1200px) {
-                margin-right: 18px;
+                @media(max-width:1200px) {
+                    margin-right: 18px;
+                }
+
+                @media(max-width:992px) {
+                    display: none !important;
+                }
             }
         }
 
@@ -305,6 +319,11 @@ body {
         transform: translateX(-50%);
         top: 0;
         z-index: 9999;
+
+        @media (max-width: 650px) {
+            width: 100%;
+            background-color: #252C58;
+        }
     }
 
     .navbar_2 {
@@ -315,6 +334,11 @@ body {
         padding-bottom: 25px;
         width: 90%;
         margin: 0 auto;
+
+        @media (max-width: 767px) {
+            padding-bottom: 26px;
+            padding-top: 26px;
+        }
 
         &::before {
             content: "";
@@ -331,6 +355,10 @@ body {
             border-bottom-color: transparent;
             border-left-color: transparent;
             top: -57px;
+
+            @media (max-width: 650px) {
+                display: none;
+            }
 
         }
 
@@ -349,6 +377,10 @@ body {
             border-bottom-color: transparent;
             border-left-color: transparent;
             top: -57px;
+
+            @media (max-width: 650px) {
+                display: none;
+            }
 
         }
 
@@ -524,6 +556,14 @@ body {
 
 .tovar {
     margin-top: 50px;
+
+    .tab_list-link {
+
+        &.active {
+            background-color: #000;
+            color: #fff;
+        }
+    }
 
 
 
@@ -759,6 +799,7 @@ body {
         justify-content: space-between;
 
         @media (max-width: 767px) {
+            margin-bottom: 20px;
             flex-direction: row;
             justify-content: space-between;
             height: 100%;
@@ -768,6 +809,7 @@ body {
             flex-direction: column;
             align-items: center;
             height: initial;
+            margin-bottom: 40px;
         }
     }
 
@@ -824,6 +866,7 @@ body {
         }
 
         @media (max-width: 550px) {
+            width: 100%;
             margin-top: 40px;
         }
     }

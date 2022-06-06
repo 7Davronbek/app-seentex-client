@@ -16,7 +16,7 @@ const Sertificate = () => {
             <div className="sertificat">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-md-4 ser_box_1">
+                        <div className="col-md-4  ser_box_1">
                             <div className="cards">
                                 <h1>Почему мы?</h1>
                                 <p>
