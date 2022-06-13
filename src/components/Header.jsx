@@ -49,7 +49,7 @@ const Header = () => {
                                 <div className="col-12 justify-content-between d-flex">
                                     <a href="!#" className="nav_2_a">Главная</a>
                                     <a href="!#" className="nav_2_a">О нас</a>
-                                    <a href="!#" className="nav_2_a">Услуги</a>
+                                    <a href="!#" className="nav_2_a">Товары</a>
                                     <a href="!#" className="nav_2_a">Контакты</a>
                                 </div>
                             </div>

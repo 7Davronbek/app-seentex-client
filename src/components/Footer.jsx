@@ -64,7 +64,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <a rel="noreferrer" target={'_blank'} href='https://kokoagency.uz/'>Created by KoKo digital agency. All rights reserved.</a>
+                            <a rel="noreferrer" target={'_blank'} href='https://kokoagency.uz/'>Created by kOkO digital agency. All rights reserved.</a>
                         </div>
                     </div>
                 </div>
