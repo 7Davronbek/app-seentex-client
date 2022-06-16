@@ -10,11 +10,12 @@ import {
     EffectFade, Navigation, Autoplay
 } from "swiper";
 
-import { getLanguage } from '../locales';
+import { getLanguage, getText } from '../locales';
+import { LANGUAGE } from '../tools/constants';
 
 const Header = () => {
     const changeLanguage = (e) => {
-        localStorage.setItem(getLanguage, e.target.value)
+        localStorage.setItem(LANGUAGE, e.target.value)
         document.location.reload(true)
     }
     return (
@@ -48,7 +49,7 @@ const Header = () => {
                             <div className="col-lg-1">
 
                                 <select onChange={changeLanguage}>
-                                    <option value="ru" selected={getLanguage() === "ru"} >Ру</option>
+                                    <option value="ru" selected={getLanguage() === "ru"} >РУ</option>
                                     <option value="uz" selected={getLanguage() === "uz"} >UZ</option>
                                 </select>
 
@@ -61,10 +62,10 @@ const Header = () => {
                         <div className="container nn">
                             <div className="row navbar_2">
                                 <div className="col-12 justify-content-between d-flex">
-                                    <a href="!#" className="nav_2_a">Главная</a>
-                                    <a href="!#" className="nav_2_a">О нас</a>
-                                    <a href="!#" className="nav_2_a">Товары</a>
-                                    <a href="!#" className="nav_2_a">Контакты</a>
+                                    <a href="!#" className="nav_2_a">{getText("navbar1")}</a>
+                                    <a href="!#" className="nav_2_a">{getText("navbar2")}</a>
+                                    <a href="!#" className="nav_2_a">{getText("navbar3")}</a>
+                                    <a href="!#" className="nav_2_a">{getText("navbar4")}</a>
                                 </div>
                             </div>
                         </div>

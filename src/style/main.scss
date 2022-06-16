@@ -184,6 +184,23 @@ body {
     width: 100%;
     background-color: white;
 
+    select {
+        padding: 5px 10px;
+        border-radius: 30px;
+        // border-color: transparent;
+        margin-left: auto;
+        display: block;
+
+        option {
+            color: #fff;
+            background-color: #252c58;
+        }
+
+        @media(max-width: 992px) {
+            margin-top: 10px;
+        }
+    }
+
 
     .box {
         background-color: white;
@@ -560,6 +577,16 @@ body {
 
 .tovar {
     margin-top: 50px;
+
+    .nav-item {
+        transform: translateY(-20px);
+
+        &::marker {
+            display: none !important;
+            color: transparent;
+            background-color: red;
+        }
+    }
 
     .tab_list-link {
 
