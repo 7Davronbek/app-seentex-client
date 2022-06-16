@@ -581,6 +581,10 @@ body {
     .nav-item {
         transform: translateY(-20px);
 
+        .list-group-item  {
+            cursor: pointer;
+        }
+
         &::marker {
             display: none !important;
             color: transparent;
