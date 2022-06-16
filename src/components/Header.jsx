@@ -10,7 +10,13 @@ import {
     EffectFade, Navigation, Autoplay
 } from "swiper";
 
+import { getLanguage } from '../locales';
+
 const Header = () => {
+    const changeLanguage = (e) => {
+        localStorage.setItem(getLanguage, e.target.value)
+        document.location.reload(true)
+    }
     return (
         <>
             <div className="header">
@@ -29,7 +35,7 @@ const Header = () => {
                                     <span>X</span>
                                 </div>
                             </div>
-                            <div className="col-8 d-flex justify-content-evenly head_1">
+                            <div className="col-7 d-flex justify-content-evenly head_1">
                                 <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=Seentex_group@mail.ru">
                                     <i className="fas fa-envelope"></i>
                                     <p>Seentex_group@mail.ru</p>
@@ -38,6 +44,14 @@ const Header = () => {
                                     <i className="fas fa-phone-alt"></i>
                                     <p>+998 94 071-01-01</p>
                                 </a>
+                            </div>
+                            <div className="col-lg-1">
+
+                                <select onChange={changeLanguage}>
+                                    <option value="ru" selected={getLanguage() === "ru"} >Ру</option>
+                                    <option value="uz" selected={getLanguage() === "uz"} >UZ</option>
+                                </select>
+
                             </div>
                         </div>
                     </div>
