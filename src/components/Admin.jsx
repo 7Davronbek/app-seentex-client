@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TabContent, TabPane, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
+import axios from 'axios';
+import { API_PATH } from '../tools/constants';
 
 const Admin = () => {
     const [activeTab, setActiveTab] = useState('1');
@@ -10,8 +12,57 @@ const Admin = () => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
+    const config = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
+        },
+    }
+
     const [image, setImage] = useState('')
-    
+    const [header, setHeader] = useState([])
+
+    const postHeader = (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append("image", image)
+
+        axios.post(API_PATH + 'api/header', formData, config)
+            .then((res) => {
+                setImage('')
+                getHeader()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const deleteHeader = (id) => {
+        axios.delete(`${API_PATH}api/header/${id}`)
+            .then((res) => {
+                console.log(res);
+                getHeader()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const getHeader = () => {
+        axios.get(API_PATH + 'api/header')
+            .then((res) => {
+                setHeader(res.data)
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        getHeader()
+    }, [])
+
     return (
         <>
             <div className="admin">
@@ -66,11 +117,25 @@ const Admin = () => {
                                     <Row className='align-items-center'>
                                         <div className="col-xl-8">
                                             <div className="tab_desc">
-                                                <input type="file"  />
-                                                <button>Send</button>
+                                                <form onSubmit={postHeader}>
+                                                    <input onChange={e => setImage(e.target.files[0])} type="file" />
+                                                    <button type='submit'>Send</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </Row>
+                                    <div className="row">
+                                        {header && header.map((item, index) => (
+                                            <>
+                                                <div key={index} className="col-lg-4 mt-4 h-100">
+                                                    <div className="cards">
+                                                        <img src={item.image} alt="" className='w-100 h-100' />
+                                                        <button onClick={(id => { deleteHeader(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))}
+                                    </div>
                                 </TabPane>
                                 <TabPane tabId="2" className=''>
                                     <Row className='align-items-center'>

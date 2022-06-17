@@ -1627,5 +1627,19 @@ body {
 
 .admin {
     background-color: #efefef;
-    
+
+    .cards {
+        height: 220px;
+        position: relative;
+        
+        img {
+            object-fit: cover;
+        }
+
+        .btn {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    }
 }
