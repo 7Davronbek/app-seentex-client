@@ -1,4 +1,5 @@
 import React from 'react'
+import { getText } from '../locales'
 
 const Galary = () => {
     return (
@@ -7,7 +8,7 @@ const Galary = () => {
             <div className="gallery">
                 <div className="container">
                     <div className="gallery_text">
-                        <h1>Галерея</h1>
+                        <h1>{getText("galereya")}</h1>
                     </div>
 
                     <div className="popur">

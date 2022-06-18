@@ -28,7 +28,7 @@ const Map = () => {
                                     <i className="fas fa-phone-alt"></i>
                                     <div className="text">
                                         <h1>+998 94 071-01-01</h1>
-                                        <p>Тохир</p>
+                                        <p>{getText("toxir")}</p>
                                     </div>
                                 </a>
                             </div>
@@ -48,7 +48,7 @@ const Map = () => {
 
                     <div className="row justify-content-between">
                         <div className="col-lg-5 col-md-12 map_link">
-                            <h2>Наш адрес:</h2>
+                            <h2>{getText("ourAddress")}</h2>
                             <div className="map_link_2_box">
                                 <a
                                     href="https://www.google.com/maps/place/41%C2%B027'09.7%22N+69%C2%B032'27.8%22E/@41.452698,69.541058,16z/data=!4m5!3m4!1s0x0:0xb494b791b0a9e278!8m2!3d41.452698!4d69.541058"
@@ -57,10 +57,9 @@ const Map = () => {
                                     <i className="fas fa-map-marker-alt"></i>
                                     <div className="text">
                                         <h1>
-                                            Розниса-Караванный <br />
-                                            рынок в Чирчике.
+                                            {getText("address2")}
                                         </h1>
-                                        <p>Вт-Вс 09:00 - 18:00</p>
+                                        <p>{getText("day2")} 09:00 - 18:00</p>
                                     </div>
                                 </a>
 
@@ -68,7 +67,7 @@ const Map = () => {
                                     <i className="fas fa-phone-alt"></i>
                                     <div className="text">
                                         <h1>+998 97 343-12-21</h1>
-                                        <p>Наврузбек</p>
+                                        <p>{getText("navruzbek")}</p>
                                     </div>
                                 </a>
                             </div>

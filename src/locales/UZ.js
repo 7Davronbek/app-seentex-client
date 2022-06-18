@@ -22,6 +22,10 @@ export const uz = {
 
     ourAddress: "Bizning manzil",
     address: " Optom - O'rikzor Stroy shahar 3 blok 10/61.",
+    address2: "Chirchiq shahridagi Roznis-Karvon bozori.",  
     day: "Du-Sh",
+    day2: "Se-Ya",
+    toxir: "Toxir",
+    navruzbek: "Navruzbek",
     galereya: "Galereya",
 }
