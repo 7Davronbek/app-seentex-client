@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { getText } from '../locales'
 
 const Footer = () => {
     return (
@@ -19,17 +20,17 @@ const Footer = () => {
                                 <span>E</span>
                                 <span>X</span>
                             </div>
-                            <div className="footer_logo_text">Высокое качество продукта</div>
+                            <div className="footer_logo_text">{getText("footer")}</div>
                         </div>
                         <div className="col-lg-3 footer_link">
-                            <h3>Mеню</h3>
-                            <a href="!#" className="footer_2_a">Главная</a>
-                            <a href="!#" className="footer_2_a">О нас</a>
-                            <a href="!#" className="footer_2_a">Услуги</a>
-                            <Link to='/admin' href="!#" className="footer_2_a">Контакты</Link>
+                            <h3 className='mb-4'>{getText("footer1")}</h3>
+                            <a href="!#" className="footer_2_a">{getText("navbar1")}</a>
+                            <a href="!#" className="footer_2_a">{getText("navbar2")}</a>
+                            <a href="!#" className="footer_2_a">{getText("navbar3")}</a>
+                            <Link to='/admin' href="!#" className="footer_2_a">{getText("navbar4")}</Link>
                         </div>
                         <div className="col-lg-4 footer_link_2">
-                            <h3>Cоц.сети</h3>
+                            <h3 className='mb-5'>{getText("footer2")}</h3>
                             <div className="footer_link_2_box">
                                 <div className="footer_net">
                                     <a href="https://t.me/+LHavaShLtpxmYjZi"

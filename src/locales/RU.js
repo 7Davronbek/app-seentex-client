@@ -30,4 +30,8 @@ export const ru = {
   toxir: "Тохир",
   navruzbek: "Наврузбек",
   galereya: "Галерея",
+
+  footer: "Высокое качество продукта",
+  footer1: "Mеню",
+  footer2: "Cоц.сети",
 };
