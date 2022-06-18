@@ -1,7 +1,21 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { getText } from '../locales'
+import { API_PATH } from '../tools/constants'
 
 const Galary = () => {
+    const [galary, setGalary] = useState([])
+
+    const getGalary = () => {
+        axios.get(API_PATH + 'api/gallery')
+            .then((res) => {
+                setGalary(res.data)
+            })
+    }
+
+    useEffect(() => {
+        getGalary()
+    }, [])
     return (
         <>
 
@@ -20,32 +34,14 @@ const Galary = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_1.jpg" className="gallery_img" alt="" />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_2.jpg" className="gallery_img" alt="" />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_3.jpg" className="gallery_img" alt="" />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_4.jpg" className="gallery_img" alt="" />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_1.jpg" className="gallery_img" alt="" />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_2.jpg" className="gallery_img" alt="" />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_3.jpg" className="gallery_img" alt="" />
-                        </div>
-                        <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
-                            <img src="./images/galery_4.jpg" className="gallery_img" alt="" />
-                        </div>
+                        {galary && galary.map((item, index) => (
+                            <>
+                                <div className="col-md-3 col-lg-3 col-sm-6 gallery_box">
+                                    <img src={item.image} className="gallery_img" alt="" />
+                                </div>
+                            </>
+                        ))}
+                    
                     </div>
                 </div>
             </div>

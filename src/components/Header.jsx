@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -11,13 +11,21 @@ import {
 } from "swiper";
 
 import { getLanguage, getText } from '../locales';
-import { LANGUAGE } from '../tools/constants';
+import { API_PATH, LANGUAGE } from '../tools/constants';
+import axios from 'axios';
 
 const Header = () => {
+    const [header, setHeader] = useState([])
     const changeLanguage = (e) => {
         localStorage.setItem(LANGUAGE, e.target.value)
         document.location.reload(true)
     }
+    useEffect(() => {
+        axios.get(API_PATH + "api/header")
+            .then((res) => {
+                setHeader(res.data)
+            })
+    }, [])
     return (
         <>
             <div className="header">
@@ -86,15 +94,15 @@ const Header = () => {
                                 modules={[EffectFade, Navigation, Autoplay]}
                                 className="mySwiper"
                             >
-                                <SwiperSlide>
-                                    <img src="/images/swip_2.jpg" alt="" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="/images/swip_1.jpg" alt="" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="/images/swip_2.jpg" alt="" />
-                                </SwiperSlide>
+                                {header && header.map((item, index) => {
+                                    return (
+                                        <>
+                                            <SwiperSlide>
+                                                <img src={item.image} alt="" />
+                                            </SwiperSlide>
+                                        </>
+                                    )
+                                })}
                             </Swiper>
 
 

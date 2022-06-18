@@ -22,6 +22,42 @@ const Admin = () => {
     const [image, setImage] = useState('')
     const [header, setHeader] = useState([])
 
+    const [g, setG] = useState('')
+    const [galary, setGalary] = useState([])
+
+    const postGalary = (e) => {
+        e.preventDefault()
+
+        const formData = new FormData()
+        formData.append("image", g)
+
+        axios.post(API_PATH + 'api/gallery', formData, config)
+            .then((res) => {
+                setG('')
+                getGalary()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const deleteGalary = (id) => {
+        axios.delete(`${API_PATH}api/gallery/${id}`)
+            .then((res) => {
+                getGalary()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const getGalary = () => {
+        axios.get(API_PATH + 'api/gallery')
+            .then((res) => {
+                setGalary(res.data)
+            })
+    }
+
     const postHeader = (e) => {
         e.preventDefault()
         const formData = new FormData()
@@ -40,7 +76,6 @@ const Admin = () => {
     const deleteHeader = (id) => {
         axios.delete(`${API_PATH}api/header/${id}`)
             .then((res) => {
-                console.log(res);
                 getHeader()
             })
             .catch((err) => {
@@ -52,7 +87,6 @@ const Admin = () => {
         axios.get(API_PATH + 'api/header')
             .then((res) => {
                 setHeader(res.data)
-                console.log(res);
             })
             .catch((err) => {
                 console.log(err);
@@ -61,6 +95,7 @@ const Admin = () => {
 
     useEffect(() => {
         getHeader()
+        getGalary()
     }, [])
 
     return (
@@ -85,7 +120,7 @@ const Admin = () => {
                                 <NavLink
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `2` })}
                                     onClick={() => { toggle(`2`) }} >
-                                    Hазвание бренда
+                                    Gallery
                                 </NavLink>
                                 <NavLink
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `3` })}
@@ -139,35 +174,29 @@ const Admin = () => {
                                 </TabPane>
                                 <TabPane tabId="2" className=''>
                                     <Row className='align-items-center'>
-                                        <div className="row">
-                                            <div className="col-xl-4">
-                                                <div className="tab_item">
-                                                    <img
-                                                        className="tab_item-img"
-                                                        src="/images/tovar_1.png"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-xl-8">
-                                                <div className="tab_desc">
-                                                    <h3 className="tab_desc-title">
-                                                        <span className="text-uppercase">Hазвание бренда</span>
-                                                    </h3>
-                                                    <p className="tab_desc-text">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                        Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                        vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                        amet, lorem vitae lectus risus diam <br /><br />
-                                                        nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                        sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                        parturient sed
-                                                    </p>
-                                                </div>
+                                        <div className="col-xl-8">
+                                            <div className="tab_desc">
+                                                <form onSubmit={postGalary}>
+                                                    <input onChange={e => setG(e.target.files[0])} type="file" />
+                                                    <button type='submit'>Send</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </Row>
+                                    <div className="row">
+                                        {galary && galary.map((item, index) => {
+                                            return (
+                                                <>
+                                                    <div key={index.toString()} className="col-lg-4  mt-4 h-100">
+                                                        <div className="cards ">
+                                                            <img className='w-100 h-100' src={item.image} alt="" />
+                                                            <button onClick={(id => { deleteGalary(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )
+                                        })}
+                                    </div>
                                 </TabPane>
                                 <TabPane tabId="3" className=''>
                                     <Row className='align-items-center'>
