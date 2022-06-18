@@ -8,6 +8,7 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { EffectCards } from "swiper";
+import { getText } from '../locales';
 
 const Sertificate = () => {
     return (
@@ -18,17 +19,15 @@ const Sertificate = () => {
                     <div className="row justify-content-center">
                         <div className="col-md-4  ser_box_1">
                             <div className="cards">
-                                <h1>Почему мы?</h1>
+                                <h1>{getText("whyWe")}</h1>
                                 <p>
-                                    Наша команда уже на протяжении нескольких лет занимается
-                                    услугами в сфере разработки сайтов и магазинов любой сложности.
+                                   {getText("whyWeP")}
                                 </p>
                             </div>
                             <div className="cards mt-md-3">
-                                <h1>Гарантия</h1>
+                                <h1>{getText("garantiya")}</h1>
                                 <p>
-                                    Наша команда выполняет проекты с нуля и «под ключ». Мы полностью
-                                    даём гарантию на все наши услуги
+                                   {getText("garantiyaP")}
                                 </p>
                             </div>
                         </div>

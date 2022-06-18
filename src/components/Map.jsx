@@ -1,4 +1,5 @@
 import React from 'react'
+import { getText } from '../locales'
 
 const Map = () => {
     return (
@@ -8,7 +9,7 @@ const Map = () => {
                 <div className="container">
                     <div className="row justify-content-between">
                         <div className="col-lg-5 col-md-12 map_link">
-                            <h2>Наш адрес:</h2>
+                            <h2>{getText("ourAddress")}</h2>
                             <div className="map_link_2_box">
                                 <a
                                     href="https://www.google.com/maps/place/41%C2%B017'13.0%22N+69%C2%B009'05.4%22E/@41.286945,69.151491,16z/data=!4m5!3m4!1s0x0:0xe333e071222b1f31!8m2!3d41.286945!4d69.151491"
@@ -17,10 +18,9 @@ const Map = () => {
                                     <i className="fas fa-map-marker-alt"></i>
                                     <div className="text">
                                         <h1>
-                                            Оптом - Урикзор Строй город <br />
-                                            3 блок 10/61.
+                                            {getText("address")}
                                         </h1>
-                                        <p>Пн-Сб 09:00 - 18:00</p>
+                                        <p>{getText("day")} 09:00 - 18:00</p>
                                     </div>
                                 </a>
 

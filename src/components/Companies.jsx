@@ -4,13 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Navigation } from 'swiper';
+import { getText } from '../locales';
 
 const Companies = () => {
     return (
         <>
 
             <div className="companies">
-                <div className="companies_text">Нам доверяют</div>
+                <div className="companies_text">{getText("believe")}</div>
 
                 <Swiper
                     loop={true}

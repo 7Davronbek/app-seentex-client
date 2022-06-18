@@ -1,4 +1,5 @@
 import React from 'react'
+import { getText } from '../locales'
 
 const Section = () => {
     return (
@@ -9,7 +10,7 @@ const Section = () => {
                     <div className="row tovar pb-4">
                         <div className="col-12">
                             <div className="tovar_text">
-                                <p>НАШИ ПРЕИМУЩЕСТВА</p>
+                                <p>{getText("benefist")}</p>
                             </div>
                         </div>
                         <div className="row">
@@ -23,7 +24,7 @@ const Section = () => {
                                     style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
-                                <p>ОПТИМАЛЬНОЕ СООТНОШЕНИЕ ЦЕНЫ И КАЧЕСТВА ТОВАРА.</p>
+                                <p>{getText("benefist1")}</p>
                             </div>
                             <div className="col-md-6 col-sm-12 col-lg-3 tovar_box">
                                 <lord-icon
@@ -35,7 +36,7 @@ const Section = () => {
                                     style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
-                                <p>100% КАЧЕСТВeнные и безопасные ТОВАРы.</p>
+                                <p>{getText("benefist2")}</p>
                             </div>
                             <div className="col-md-6 col-sm-12 col-lg-3 tovar_box">
                                 <lord-icon
@@ -47,7 +48,7 @@ const Section = () => {
                                     style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
-                                <p>международный Компаний сотрудничают с нами</p>
+                                <p>{getText("benefist3")}</p>
                             </div>
                             <div className="col-md-6 col-sm-12 col-lg-3 tovar_box">
                                 <lord-icon
@@ -60,7 +61,7 @@ const Section = () => {
                                     style={{ height: "250px", width: "250px" }}
                                 >
                                 </lord-icon>
-                                <p>есть призы нашим постоянным клиентам</p>
+                                <p>{getText("benefist4")}</p>
                             </div>
                         </div>
                     </div>

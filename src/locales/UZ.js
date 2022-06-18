@@ -5,7 +5,7 @@ export const uz = {
     navbar4: "Aloqa",
 
     aboutUs: "SEENTEX KOMPANIYAMIZ HAQIDA",
-    aboutUsP: ` "SEENTEX" гроуп образовалась в 2022 году и поставляет сантехнику по всему Узбекистану под брендом "SEENTEX". На основании договоров с самыми известными предприятиями КНР поставляет нашему народу качественную сантехнику. Одной из основных целей компании является обеспечение рынка качественными товарами. Высшая цель –F ориентированно на качество. В настоящее время, благодаря спросу нашего народа, мы начали предлагать различные модели смесителей и котлов в различных дизайнах. Стратегия компании заключается в расширении ассортимента сантехнической продукции и удовлетворении населения путем обеспечения его качественными товарами. `,
+    aboutUsP: ` "SEENTEX" Guruh 2022-yilda tashkil etilgan boʻlib, butun Oʻzbekiston boʻylab “SEENTEX” brendi ostida sanitariya-texnik vositalarni yetkazib beradi. Xitoy eng mashhur korxonalar bilan tuzilgan shartnomalar asosida xalqimizga sifatli sanitariya-texnik vositalar yetkazib bermoqda. Korxonaning asosiy maqsadlaridan biri bozorni sifatli mahsulotlar bilan ta’minlashdan iborat. Eng yuqori maqsad -F - sifatga yo'naltirilgan. Ayni paytda xalqimiz talabidan kelib chiqib, turli dizayndagi kran va qozonlarning turli modellarini taklif qila boshladik. Korxonaning strategiyasi sanitariya-gigiyena vositalari assortimentini kengaytirish va uni sifatli mahsulotlar bilan ta’minlash orqali aholini qondirishdan iborat. `,
 
     benefist: "BIZNING AFZALLIKLAR",
     benefist1: "TOVAR NARXI VA SIFATNING OPTIMAL MUNOLOQATLIGI.",
@@ -18,7 +18,10 @@ export const uz = {
     garantiya: "Kafolat",
     garantiyaP: "Bizning jamoamiz loyihalarni noldan boshlab va kalit taslim asosida amalga oshiradi. Biz barcha xizmatlarimizga to'liq kafolat beramiz.",
 
+    believe: "BIZNING HAMKORLAR",
+
     ourAddress: "Bizning manzil",
     address: " Optom - O'rikzor Stroy shahar 3 blok 10/61.",
+    day: "Du-Sh",
     galereya: "Galereya",
 }
