@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Navigation } from 'swiper';
 import { getText } from '../locales';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { API_PATH } from '../tools/constants';
 
 const Companies = () => {
+    const [client, setClient] = useState([])
+
+    const getClient = () => {
+        axios.get(API_PATH + 'api/client')
+            .then((res) => {
+                setClient(res.data)
+            })
+    }
+    useEffect(() => {
+        getClient()
+    }, [])
     return (
         <>
 
@@ -37,51 +51,17 @@ const Companies = () => {
                     modules={[Navigation, Autoplay]}
                     className="mySwiper"
                 >
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_1_1.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_2_2.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_1_1.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_2_2.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_1_1.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_2_2.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_1_1.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_2_2.png" alt="" />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="swiper-slide">
-                            <img src="/images/dover_1_1.png" alt="" />
-                        </div>
-                    </SwiperSlide>
+                    {client && client.map((item, index) => {
+                        return (
+                            <>
+                                <SwiperSlide key={index}>
+                                    <div className="swiper-slide">
+                                        <img src={item.image} alt="" />
+                                    </div>
+                                </SwiperSlide>
+                            </>
+                        )
+                    })}
                 </Swiper>
 
             </div>

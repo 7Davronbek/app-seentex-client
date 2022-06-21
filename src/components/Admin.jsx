@@ -25,6 +25,42 @@ const Admin = () => {
     const [g, setG] = useState('')
     const [galary, setGalary] = useState([])
 
+    const [client, setClient] = useState([])
+    const [c, setC] = useState('')
+
+    const getClient = () => {
+        axios.get(API_PATH + 'api/client')
+            .then((res) => {
+                setClient(res.data)
+            })
+    }
+
+    const postClient = (e) => {
+        e.preventDefault()
+
+        const formData = new FormData()
+        formData.append("image", c)
+        axios.post(API_PATH + 'api/client', formData, config)
+            .then((res) => {
+                setC('')
+                getClient()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const deleteClient = (id) => {
+        axios.delete(`${API_PATH}api/client/${id}`)
+            .then((res) => {
+                getClient()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+
     const postGalary = (e) => {
         e.preventDefault()
 
@@ -96,6 +132,7 @@ const Admin = () => {
     useEffect(() => {
         getHeader()
         getGalary()
+        getClient()
     }, [])
 
     return (
@@ -108,7 +145,7 @@ const Admin = () => {
                         </div>
                     </div>
 
-                    <div className="row">
+                    <div className="row my-5 py-5">
                         <div className="col-3">
 
                             <NavItem>
@@ -125,7 +162,7 @@ const Admin = () => {
                                 <NavLink
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `3` })}
                                     onClick={() => { toggle(`3`) }} >
-                                    Tabs
+                                    Klients
                                 </NavLink>
                                 <NavLink
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `4` })}
@@ -146,7 +183,7 @@ const Admin = () => {
 
                         </div>
 
-                        <div className="col-9">
+                        <div className="col-9 ">
                             <TabContent activeTab={activeTab}>
                                 <TabPane tabId="1" className=''>
                                     <Row className='align-items-center'>
@@ -162,7 +199,7 @@ const Admin = () => {
                                     <div className="row">
                                         {header && header.map((item, index) => (
                                             <>
-                                                <div key={index} className="col-lg-4 mt-4 h-100">
+                                                <div key={index} className="col-lg-6 mt-4 h-100">
                                                     <div className="cards">
                                                         <img src={item.image} alt="" className='w-100 h-100' />
                                                         <button onClick={(id => { deleteHeader(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
@@ -202,23 +239,23 @@ const Admin = () => {
                                     <Row className='align-items-center'>
                                         <div className="col-xl-8">
                                             <div className="tab_desc">
-                                                <form 
-                                                // onSubmit={post}
+                                                <form
+                                                    onSubmit={postClient}
                                                 >
-                                                    <input onChange={e => setG(e.target.files[0])} type="file" />
+                                                    <input onChange={e => setC(e.target.files[0])} type="file" />
                                                     <button type='submit'>Send</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </Row>
                                     <div className="row">
-                                        {galary && galary.map((item, index) => {
+                                        {client && client.map((item, index) => {
                                             return (
                                                 <>
                                                     <div key={index.toString()} className="col-lg-4  mt-4 h-100">
                                                         <div className="cards ">
                                                             <img className='w-100 h-100' src={item.image} alt="" />
-                                                            <button onClick={(id => { deleteGalary(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
+                                                            <button onClick={(id => { deleteClient(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
                                                         </div>
                                                     </div>
                                                 </>
