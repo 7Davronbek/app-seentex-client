@@ -28,6 +28,52 @@ const Admin = () => {
     const [client, setClient] = useState([])
     const [c, setC] = useState('')
 
+    const [t, setT] = useState('')
+    const [title, setTitle] = useState('')
+    const [title_ru, setTitle_ru] = useState('')
+    const [desc, setDesc] = useState("")
+    const [desc_ru, setDesc_ru] = useState("")
+    const [tabs, setTabs] = useState([])
+
+    const getTabs = () => {
+        axios.get(API_PATH + 'api/product')
+            .then((res) => {
+                setTabs(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const postTabs = (e) => {
+        e.preventDefault()
+
+        const formData = new FormData()
+        formData.append("image", t)
+        formData.append("title", title)
+        formData.append("title_ru", title_ru)
+        formData.append("desc", desc)
+        formData.append("desc_ru", desc_ru)
+        axios.post(API_PATH + 'api/product', formData, config)
+            .then((res) => {
+                getTabs()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const deleteTabs = (id) => {
+        axios.delete(`${API_PATH}api/product/${id}`)
+            .then((res) => {
+                getTabs()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+
     const getClient = () => {
         axios.get(API_PATH + 'api/client')
             .then((res) => {
@@ -133,6 +179,7 @@ const Admin = () => {
         getHeader()
         getGalary()
         getClient()
+        getTabs()
     }, [])
 
     return (
@@ -167,9 +214,9 @@ const Admin = () => {
                                 <NavLink
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `4` })}
                                     onClick={() => { toggle(`4`) }} >
-                                    Hазвание бренда
+                                    Tabs
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `5` })}
                                     onClick={() => { toggle(`5`) }} >
                                     Hазвание бренда
@@ -178,7 +225,7 @@ const Admin = () => {
                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `6` })}
                                     onClick={() => { toggle(`6`) }} >
                                     Hазвание бренда
-                                </NavLink>
+                                </NavLink> */}
                             </NavItem>
 
                         </div>
@@ -264,38 +311,50 @@ const Admin = () => {
                                     </div>
                                 </TabPane>
                                 <TabPane tabId="4" className=''>
+
                                     <Row className='align-items-center'>
-                                        <div className="row">
-                                            <div className="col-xl-4">
-                                                <div className="tab_item">
-                                                    <img
-                                                        className="tab_item-img"
-                                                        src="/images/tovar_1.png"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-xl-8">
-                                                <div className="tab_desc">
-                                                    <h3 className="tab_desc-title">
-                                                        <span className="text-uppercase">Hазвание бренда</span>
-                                                    </h3>
-                                                    <p className="tab_desc-text">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                        Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                        vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                        amet, lorem vitae lectus risus diam <br /><br />
-                                                        nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                        sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                        parturient sed
-                                                    </p>
-                                                </div>
+                                        <div className="col-xl-8">
+                                            <div className="tab_desc">
+                                                <form
+                                                    className='d-flex flex-column'
+                                                    onSubmit={postTabs}
+                                                >
+                                                    <input onChange={e => setT(e.target.files[0])} type="file" />
+                                                    <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Uz Title' name='title' />
+                                                    <input value={title_ru}  onChange={e => setTitle_ru(e.target.value)}type="text" placeholder='Ru Title' name='title_ru' />
+                                                    <textarea value={desc} onChange={e => setDesc(e.target.value)} name="desc" placeholder='Description Uz' cols="30" rows="10"></textarea>
+                                                    <textarea value={desc_ru} onChange={e => setDesc_ru(e.target.value)} name="desc_ru" placeholder='Description Ru' cols="30" rows="10"></textarea>
+                                                    <button type='submit'>Send</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </Row>
+                                    <div className="row">
+                                        {tabs && tabs.map((item, index) => {
+                                            return (
+                                                <>
+                                                    <div key={index.toString()} className="col-lg-4  mt-4 h-100">
+                                                        <div className="cards h-auto">
+                                                            <img className='w-100 h-100' src={item.image} alt="" />
+                                                            <h3 className='d-flex align-items-center'><h6>uz</h6> {item.title}</h3>
+                                                            <h3 className='d-flex align-items-center'><h6>ru</h6> {item.title_ru}</h3>
+                                                            {/* {desc && desc.map((item2, index2) => {
+                                                                return (
+                                                                    <>
+                                                                        <p key={index2.toString()}>{item2}</p>
+                                                                    </>
+                                                                )
+                                                            })} */}
+                                                            <button onClick={(id => { deleteTabs(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )
+                                        })}
+                                    </div>
+
                                 </TabPane>
-                                <TabPane tabId="5" className=''>
+                                {/* <TabPane tabId="5" className=''>
                                     <Row className='align-items-center'>
                                         <div className="row">
                                             <div className="col-xl-4">
@@ -358,7 +417,7 @@ const Admin = () => {
                                             </div>
                                         </div>
                                     </Row>
-                                </TabPane>
+                                </TabPane> */}
                             </TabContent>
                         </div>
                     </div>
