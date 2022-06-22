@@ -45,7 +45,19 @@ const Tovar = () => {
                             <div className="list-group tab_list" id="list-tab" role="tablist">
 
                                 <NavItem>
-                                    <NavLink
+                                    {tabs && tabs.map((item, index) => {
+                                        return (
+                                            <>
+                                                <NavLink
+                                                    key={index}
+                                                    className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
+                                                    onClick={() => { toggle(`${index + 1}`) }} >
+                                                    {item.title}
+                                                </NavLink>
+                                            </>
+                                        )
+                                    })}
+                                    {/* <NavLink
                                         className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `1` })}
                                         onClick={() => { toggle(`1`) }} >
                                         Hазвание бренда
@@ -74,7 +86,7 @@ const Tovar = () => {
                                         className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `6` })}
                                         onClick={() => { toggle(`6`) }} >
                                         Hазвание бренда
-                                    </NavLink>
+                                    </NavLink> */}
                                 </NavItem>
 
                             </div>

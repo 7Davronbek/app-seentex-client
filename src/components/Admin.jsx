@@ -33,6 +33,7 @@ const Admin = () => {
     const [title_ru, setTitle_ru] = useState('')
     const [desc, setDesc] = useState("")
     const [desc_ru, setDesc_ru] = useState("")
+    const [category, setCategory] = useState("")
     const [tabs, setTabs] = useState([])
 
     const getTabs = () => {
@@ -52,6 +53,7 @@ const Admin = () => {
         formData.append("image", t)
         formData.append("title", title)
         formData.append("title_ru", title_ru)
+        formData.append("category", category)
         formData.append("desc", desc)
         formData.append("desc_ru", desc_ru)
         axios.post(API_PATH + 'api/product', formData, config)
@@ -322,6 +324,11 @@ const Admin = () => {
                                                     <input onChange={e => setT(e.target.files[0])} type="file" />
                                                     <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Uz Title' name='title' />
                                                     <input value={title_ru} onChange={e => setTitle_ru(e.target.value)} type="text" placeholder='Ru Title' name='title_ru' />
+                                                    <select onChange={e => { setCategory(e.target.value) }} name="category">
+                                                        <option></option>
+                                                        <option value="1">Cмесители</option>
+                                                        <option value="2">Kотельная</option>
+                                                    </select>
                                                     <textarea value={desc} onChange={e => setDesc(e.target.value)} name="desc" placeholder='Description Uz' cols="30" rows="10"></textarea>
                                                     <textarea value={desc_ru} onChange={e => setDesc_ru(e.target.value)} name="desc_ru" placeholder='Description Ru' cols="30" rows="10"></textarea>
                                                     <button type='submit'>Send</button>
