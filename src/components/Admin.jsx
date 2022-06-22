@@ -329,6 +329,7 @@ const Admin = () => {
                                             </div>
                                         </div>
                                     </Row>
+
                                     <div className="row">
                                         {tabs && tabs.map((item, index) => {
                                             return (
