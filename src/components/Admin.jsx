@@ -195,7 +195,7 @@ const Admin = () => {
                     </div>
 
                     <div className="row my-5 py-5">
-                        <div className="col-3">
+                        <div className="col-lg-3 mb-5">
 
                             <NavItem>
                                 <NavLink
@@ -218,29 +218,19 @@ const Admin = () => {
                                     onClick={() => { toggle(`4`) }} >
                                     Tabs
                                 </NavLink>
-                                {/* <NavLink
-                                    className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `5` })}
-                                    onClick={() => { toggle(`5`) }} >
-                                    Hазвание бренда
-                                </NavLink>
-                                <NavLink
-                                    className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `6` })}
-                                    onClick={() => { toggle(`6`) }} >
-                                    Hазвание бренда
-                                </NavLink> */}
                             </NavItem>
 
                         </div>
 
-                        <div className="col-9 ">
+                        <div className="col-lg-9 ">
                             <TabContent activeTab={activeTab}>
                                 <TabPane tabId="1" className=''>
                                     <Row className='align-items-center'>
                                         <div className="col-xl-8">
                                             <div className="tab_desc">
                                                 <form onSubmit={postHeader}>
-                                                    <input onChange={e => setImage(e.target.files[0])} type="file" />
-                                                    <button type='submit'>Send</button>
+                                                    <input className='form-control mb-3' require onChange={e => setImage(e.target.files[0])} type="file" />
+                                                    <button type='submit' className='btn btn-outline-primary px-4'>Send</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -263,8 +253,8 @@ const Admin = () => {
                                         <div className="col-xl-8">
                                             <div className="tab_desc">
                                                 <form onSubmit={postGalary}>
-                                                    <input onChange={e => setG(e.target.files[0])} type="file" />
-                                                    <button type='submit'>Send</button>
+                                                    <input className='form-control mb-3' require onChange={e => setG(e.target.files[0])} type="file" />
+                                                    <button type='submit' className='btn btn-outline-primary px-4'>Send</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -291,8 +281,8 @@ const Admin = () => {
                                                 <form
                                                     onSubmit={postClient}
                                                 >
-                                                    <input onChange={e => setC(e.target.files[0])} type="file" />
-                                                    <button type='submit'>Send</button>
+                                                    <input className='form-control mb-3' require onChange={e => setC(e.target.files[0])} type="file" />
+                                                    <button type='submit' className='btn btn-outline-primary px-4'>Send</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -321,17 +311,17 @@ const Admin = () => {
                                                     className='d-flex flex-column'
                                                     onSubmit={postTabs}
                                                 >
-                                                    <input onChange={e => setT(e.target.files[0])} type="file" />
-                                                    <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Uz Title' name='title' />
-                                                    <input value={title_ru} onChange={e => setTitle_ru(e.target.value)} type="text" placeholder='Ru Title' name='title_ru' />
-                                                    <select onChange={e => { setCategory(e.target.value) }} name="category">
-                                                        <option></option>
+                                                    <input className='form-control mb-3' require onChange={e => setT(e.target.files[0])} type="file" />
+                                                    <input className='form-control mb-3' require value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Uz Title' name='title' />
+                                                    <input className='form-control mb-3' require value={title_ru} onChange={e => setTitle_ru(e.target.value)} type="text" placeholder='Ru Title' name='title_ru' />
+                                                    <select className='form-control mb-3' onChange={e => { setCategory(e.target.value) }} name="category">
+                                                        <option>**************</option>
                                                         <option value="1">Cмесители</option>
                                                         <option value="2">Kотельная</option>
                                                     </select>
-                                                    <textarea value={desc} onChange={e => setDesc(e.target.value)} name="desc" placeholder='Description Uz' cols="30" rows="10"></textarea>
-                                                    <textarea value={desc_ru} onChange={e => setDesc_ru(e.target.value)} name="desc_ru" placeholder='Description Ru' cols="30" rows="10"></textarea>
-                                                    <button type='submit'>Send</button>
+                                                    <textarea className='form-control mb-3' required value={desc} onChange={e => setDesc(e.target.value)} name="desc" placeholder='Description Uz' cols="30" rows="10"></textarea>
+                                                    <textarea className='form-control mb-3' required value={desc_ru} onChange={e => setDesc_ru(e.target.value)} name="desc_ru" placeholder='Description Ru' cols="30" rows="10"></textarea>
+                                                    <button type='submit' className='btn btn-outline-primary px-4'>Send</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -341,8 +331,9 @@ const Admin = () => {
                                         {tabs && tabs.map((item, index) => {
                                             return (
                                                 <>
-                                                    <div key={index.toString()} className="col-lg-4  mt-4 h-100">
+                                                    <div key={index.toString()} className="col-lg-6  mt-4 h-100">
                                                         <div className="cards tasbsCard h-auto">
+                                                            <h6>Category: {item.category}</h6>
                                                             <img className='w-100 h-100' src={item.image} alt="" />
                                                             <h3 className='d-flex align-items-center'><span>uz:</span> {item.title}</h3>
                                                             <h3 className='d-flex align-items-center'><span>ru:</span> {item.title_ru}</h3>
@@ -369,70 +360,7 @@ const Admin = () => {
                                     </div>
 
                                 </TabPane>
-                                {/* <TabPane tabId="5" className=''>
-                                    <Row className='align-items-center'>
-                                        <div className="row">
-                                            <div className="col-xl-4">
-                                                <div className="tab_item">
-                                                    <img
-                                                        className="tab_item-img"
-                                                        src="/images/tovar_1.png"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-xl-8">
-                                                <div className="tab_desc">
-                                                    <h3 className="tab_desc-title">
-                                                        <span className="text-uppercase">Hазвание бренда</span>
-                                                    </h3>
-                                                    <p className="tab_desc-text">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                        Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                        vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                        amet, lorem vitae lectus risus diam <br /><br />
-                                                        nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                        sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                        parturient sed
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Row>
-                                </TabPane>
-                                <TabPane tabId="6" className=''>
-                                    <Row className='align-items-center'>
-                                        <div className="row">
-                                            <div className="col-xl-4">
-                                                <div className="tab_item">
-                                                    <img
-                                                        className="tab_item-img"
-                                                        src="/images/tovar_1.png"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="col-xl-8">
-                                                <div className="tab_desc">
-                                                    <h3 className="tab_desc-title">
-                                                        <span className="text-uppercase">Hазвание бренда</span>
-                                                    </h3>
-                                                    <p className="tab_desc-text">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                        Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                        Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                        vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                        amet, lorem vitae lectus risus diam <br /><br />
-                                                        nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                        sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                        parturient sed
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Row>
-                                </TabPane> */}
+
                             </TabContent>
                         </div>
                     </div>

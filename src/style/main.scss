@@ -1635,6 +1635,13 @@ body {
 
 .admin {
     background-color: #efefef;
+    padding: 100px 0;
+
+    .nav-item {
+        &::marker {
+            color: transparent;
+        }
+    }
 
     .cards {
         height: 220px;
