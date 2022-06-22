@@ -88,7 +88,7 @@ const Header = () => {
                                     clickable: true,
                                 }}
                                 autoplay={{
-                                    delay: 2500,
+                                    delay: 112500,
                                     disableOnInteraction: false,
                                 }}
                                 modules={[EffectFade, Navigation, Autoplay]}

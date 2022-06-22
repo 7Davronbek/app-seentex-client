@@ -7,16 +7,17 @@ import { useEffect } from 'react';
 
 const Tovar = () => {
     const [tabs, setTabs] = useState([])
+    const [tabs2, setTabs2] = useState([])
     const [activeTab, setActiveTab] = useState('1');
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
-    const getTabs = () => {
-        axios.get(API_PATH + 'api/product')
+    const getTabs1 = () => {
+        axios.get(API_PATH + 'api/category/1')
             .then((res) => {
-                setTabs(res.data)
+                setTabs(res.data.products)
                 console.log(res);
             })
             .catch((err) => {
@@ -24,8 +25,19 @@ const Tovar = () => {
             })
     }
 
+    const getTabs2 = () => {
+        axios.get(API_PATH + 'api/category/2')
+            .then((res) => {
+                setTabs2(res.data.products)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
     useEffect(() => {
-        getTabs()
+        getTabs1()
+        getTabs2()
     }, [])
 
     return (
@@ -49,7 +61,7 @@ const Tovar = () => {
                                         return (
                                             <>
                                                 <NavLink
-                                                    key={index}
+                                                    key={`${index + 1}`}
                                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
                                                     onClick={() => { toggle(`${index + 1}`) }} >
                                                     {item.title}
@@ -57,36 +69,6 @@ const Tovar = () => {
                                             </>
                                         )
                                     })}
-                                    {/* <NavLink
-                                        className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `1` })}
-                                        onClick={() => { toggle(`1`) }} >
-                                        Hазвание бренда
-                                    </NavLink>
-                                    <NavLink
-                                        className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `2` })}
-                                        onClick={() => { toggle(`2`) }} >
-                                        Hазвание бренда
-                                    </NavLink>
-                                    <NavLink
-                                        className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `3` })}
-                                        onClick={() => { toggle(`3`) }} >
-                                        Hазвание бренда
-                                    </NavLink>
-                                    <NavLink
-                                        className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `4` })}
-                                        onClick={() => { toggle(`4`) }} >
-                                        Hазвание бренда
-                                    </NavLink>
-                                    <NavLink
-                                        className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `5` })}
-                                        onClick={() => { toggle(`5`) }} >
-                                        Hазвание бренда
-                                    </NavLink>
-                                    <NavLink
-                                        className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `6` })}
-                                        onClick={() => { toggle(`6`) }} >
-                                        Hазвание бренда
-                                    </NavLink> */}
                                 </NavItem>
 
                             </div>
@@ -94,198 +76,36 @@ const Tovar = () => {
                         <div className="col-lg-8 col-xl-9">
                             <div className="tab-content tab-pane fade show active tab" id="nav-tabContent">
                                 <TabContent activeTab={activeTab}>
-                                    <TabPane tabId="1" className=''>
-                                        <Row className='align-items-center'>
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="tab_item">
-                                                        <img
-                                                            className="tab_item-img"
-                                                            src="/images/tovar_1.png"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="tab_desc">
-                                                        <h3 className="tab_desc-title">
-                                                            <span className="text-uppercase">Hазвание бренда</span>
-                                                        </h3>
-                                                        <p className="tab_desc-text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                            Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                            vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                            amet, lorem vitae lectus risus diam <br /><br />
-                                                            nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                            sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                            parturient sed
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Row>
-                                    </TabPane>
-                                    <TabPane tabId="2" className=''>
-                                        <Row className='align-items-center'>
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="tab_item">
-                                                        <img
-                                                            className="tab_item-img"
-                                                            src="/images/tovar_1.png"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="tab_desc">
-                                                        <h3 className="tab_desc-title">
-                                                            <span className="text-uppercase">Hазвание бренда</span>
-                                                        </h3>
-                                                        <p className="tab_desc-text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                            Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                            vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                            amet, lorem vitae lectus risus diam <br /><br />
-                                                            nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                            sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                            parturient sed
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Row>
-                                    </TabPane>
-                                    <TabPane tabId="3" className=''>
-                                        <Row className='align-items-center'>
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="tab_item">
-                                                        <img
-                                                            className="tab_item-img"
-                                                            src="/images/tovar_1.png"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="tab_desc">
-                                                        <h3 className="tab_desc-title">
-                                                            <span className="text-uppercase">Hазвание бренда</span>
-                                                        </h3>
-                                                        <p className="tab_desc-text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                            Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                            vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                            amet, lorem vitae lectus risus diam <br /><br />
-                                                            nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                            sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                            parturient sed
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Row>
-                                    </TabPane>
-                                    <TabPane tabId="4" className=''>
-                                        <Row className='align-items-center'>
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="tab_item">
-                                                        <img
-                                                            className="tab_item-img"
-                                                            src="/images/tovar_1.png"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="tab_desc">
-                                                        <h3 className="tab_desc-title">
-                                                            <span className="text-uppercase">Hазвание бренда</span>
-                                                        </h3>
-                                                        <p className="tab_desc-text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                            Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                            vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                            amet, lorem vitae lectus risus diam <br /><br />
-                                                            nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                            sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                            parturient sed
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Row>
-                                    </TabPane>
-                                    <TabPane tabId="5" className=''>
-                                        <Row className='align-items-center'>
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="tab_item">
-                                                        <img
-                                                            className="tab_item-img"
-                                                            src="/images/tovar_1.png"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="tab_desc">
-                                                        <h3 className="tab_desc-title">
-                                                            <span className="text-uppercase">Hазвание бренда</span>
-                                                        </h3>
-                                                        <p className="tab_desc-text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                            Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                            vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                            amet, lorem vitae lectus risus diam <br /><br />
-                                                            nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                            sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                            parturient sed
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Row>
-                                    </TabPane>
-                                    <TabPane tabId="6" className=''>
-                                        <Row className='align-items-center'>
-                                            <div className="row">
-                                                <div className="col-xl-4">
-                                                    <div className="tab_item">
-                                                        <img
-                                                            className="tab_item-img"
-                                                            src="/images/tovar_1.png"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-8">
-                                                    <div className="tab_desc">
-                                                        <h3 className="tab_desc-title">
-                                                            <span className="text-uppercase">Hазвание бренда</span>
-                                                        </h3>
-                                                        <p className="tab_desc-text">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                            Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                            vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                            amet, lorem vitae lectus risus diam <br /><br />
-                                                            nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                            sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                            parturient sed
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Row>
-                                    </TabPane>
+                                    {tabs && tabs.map((item, index) => {
+                                        return (
+                                            <>
+                                                <TabPane key={`${index + 1}`} tabId={`${index + 1}`} className=''>
+                                                    <Row className='align-items-center '>
+                                                        <div className="col-xl-4">
+                                                            <div className="tab_item">
+                                                                <img
+                                                                    className={"tab_item-img"}
+                                                                    src={`${item.image}`}
+                                                                    alt=""
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-8">
+                                                            <div className="tab_desc">
+                                                                <h3 className="tab_desc-title">
+                                                                    <span className="text-uppercase">{item.title}</span>
+                                                                </h3>
+                                                                <p className="tab_desc-text">
+                                                                    {item.desc}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </Row>
+                                                </TabPane>
+                                            </>
+                                        )
+                                    })}
+
                                 </TabContent>
                             </div>
                         </div>
@@ -302,274 +122,58 @@ const Tovar = () => {
                     <div className="row justify-content-center gap-4 gap-xl-0 mt-4">
                         <div className="col-lg-8 col-xl-3">
                             <div className="list-group tab_list" id="list-tab" role="tablist">
-                                <a
-                                    className="list-group-item list-group-item-action tab_list-link active"
-                                    id="Ism_7_list"
-                                    data-bs-toggle="list"
-                                    href="#list_7"
-                                    role="tab"
-                                    aria-controls="list_1"
-                                >Hазвание бренда</a
-                                >
-                                <a
-                                    className="list-group-item list-group-item-action tab_list-link"
-                                    id="List_8_list"
-                                    data-bs-toggle="list"
-                                    href="#List_8"
-                                    role="tab"
-                                    aria-controls="List_4"
-                                >Hазвание бренда</a
-                                >
-                                <a
-                                    className="list-group-item list-group-item-action tab_list-link"
-                                    id="List_9_list"
-                                    data-bs-toggle="list"
-                                    href="#List_9"
-                                    role="tab"
-                                    aria-controls="List_2"
-                                >Hазвание бренда</a
-                                >
-                                <a
-                                    className="list-group-item list-group-item-action tab_list-link"
-                                    id="List_10_list"
-                                    data-bs-toggle="list"
-                                    href="#List_10"
-                                    role="tab"
-                                    aria-controls="List_3"
-                                >Hазвание бренда</a
-                                >
-                                <a
-                                    className="list-group-item list-group-item-action tab_list-link"
-                                    id="List_11-list"
-                                    data-bs-toggle="list"
-                                    href="#List_11"
-                                    role="tab"
-                                    aria-controls="List_5"
-                                >Hазвание бренда</a
-                                >
-                                <a
-                                    className="list-group-item list-group-item-action tab_list-link"
-                                    id="list-12-list"
-                                    data-bs-toggle="list"
-                                    href="#list-12"
-                                    role="tab"
-                                    aria-controls="list-6"
-                                >Hазвание бренда</a
-                                >
+
+                                <NavItem>
+                                    {tabs2 && tabs2.map((item, index) => {
+                                        return (
+                                            <>
+                                                <NavLink
+                                                    key={`${index + 1}`}
+                                                    className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
+                                                    onClick={() => { toggle(`${index + 1}`) }} >
+                                                    {item.title}
+                                                </NavLink>
+                                            </>
+                                        )
+                                    })}
+                                </NavItem>
+
                             </div>
                         </div>
                         <div className="col-lg-8 col-xl-9">
-                            <div className="tab-content" id="nav-tabContent">
-                                <div
-                                    className="tab-pane fade show active tab"
-                                    id="list_7"
-                                    role="tabpanel"
-                                    aria-labelledby="Ism_1_list"
-                                >
-                                    <div className="row">
-                                        <div className="col-xl-4">
-                                            <div className="tab_item">
-                                                <img
-                                                    className="tab_item-img"
-                                                    src="/images/category_2_1.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-8">
-                                            <div className="tab_desc">
-                                                <h3 className="tab_desc-title">
-                                                    <span className="text-uppercase">Hазвание бренда</span>
-                                                </h3>
-                                                <p className="tab_desc-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                    Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                    vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                    amet, lorem vitae lectus risus diam <br /><br />
-                                                    nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                    sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                    parturient sed
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="tab-pane fade tab"
-                                    id="List_8"
-                                    role="tabpanel"
-                                    aria-labelledby="List_4_list"
-                                >
-                                    <div className="row">
-                                        <div className="col-xl-4">
-                                            <div className="tab_item">
-                                                <img
-                                                    className="tab_item-img"
-                                                    src="/images/kategory_1.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-8">
-                                            <div className="tab_desc">
-                                                <h3 className="tab_desc-title">
-                                                    <span className="text-uppercase">Hазвание бренда</span>
-                                                </h3>
-                                                <p className="tab_desc-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                    Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                    vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                    amet, lorem vitae lectus risus diam <br /><br />
-                                                    nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                    sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                    parturient sed
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="tab-pane fade tab"
-                                    id="List_9"
-                                    role="tabpanel"
-                                    aria-labelledby="List_2_list"
-                                >
-                                    <div className="row">
-                                        <div className="col-xl-4">
-                                            <div className="tab_item">
-                                                <img
-                                                    className="tab_item-img"
-                                                    src="/images/kategory_1.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-8">
-                                            <div className="tab_desc">
-                                                <h3 className="tab_desc-title">
-                                                    <span className="text-uppercase">Hазвание бренда</span>
-                                                </h3>
-                                                <p className="tab_desc-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                    Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                    vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                    amet, lorem vitae lectus risus diam <br /><br />
-                                                    nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                    sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                    parturient sed
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="tab-pane fade tab"
-                                    id="List_10"
-                                    role="tabpanel"
-                                    aria-labelledby="List_3_list"
-                                >
-                                    <div className="row">
-                                        <div className="col-xl-4">
-                                            <div className="tab_item">
-                                                <img
-                                                    className="tab_item-img"
-                                                    src="/images/kategory_1.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-8">
-                                            <div className="tab_desc">
-                                                <h3 className="tab_desc-title">
-                                                    <span className="text-uppercase">Hазвание бренда </span>
-                                                </h3>
-                                                <p className="tab_desc-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                    Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                    vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                    amet, lorem vitae lectus risus diam <br /><br />
-                                                    nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                    sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                    parturient sed
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="tab-pane fade tab"
-                                    id="List_11"
-                                    role="tabpanel"
-                                    aria-labelledby="List_5-list"
-                                >
-                                    <div className="row">
-                                        <div className="col-xl-4">
-                                            <div className="tab_item">
-                                                <img
-                                                    className="tab_item-img"
-                                                    src="/images/kategory_1.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-8">
-                                            <div className="tab_desc">
-                                                <h3 className="tab_desc-title">
-                                                    <span className="text-uppercase">Hазвание бренда</span>
-                                                </h3>
-                                                <p className="tab_desc-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                    Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                    vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                    amet, lorem vitae lectus risus diam <br /><br />
-                                                    nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                    sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                    parturient sed
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="tab-pane fade tab"
-                                    id="list-12"
-                                    role="tabpanel"
-                                    aria-labelledby="list-6-list"
-                                >
-                                    <div className="row">
-                                        <div className="col-xl-4">
-                                            <div className="tab_item">
-                                                <img
-                                                    className="tab_item-img"
-                                                    src="/images/kategory_1.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-8">
-                                            <div className="tab_desc">
-                                                <h3 className="tab_desc-title">
-                                                    <span className="text-uppercase">Hазвание бренда</span>
-                                                </h3>
-                                                <p className="tab_desc-text">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    Orci, mauris neque, gravida amet diam cum nisl enim.
-                                                    Vestibulum, risus, maecenas et nisi lobortis malesuada
-                                                    vel. Neque, sem tellus sed a, enim egestas. Mi mi id
-                                                    amet, lorem vitae lectus risus diam <br /><br />
-                                                    nunc. Eget nunc eget lectus amet feugiat lobortis sit
-                                                    sit non eu. Nunc, mauris viverra quis sapien quam. Non
-                                                    parturient sed
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div className="tab-content tab-pane fade show active tab" id="nav-tabContent">
+                                <TabContent activeTab={activeTab}>
+                                    {tabs && tabs.map((item, index) => {
+                                        return (
+                                            <>
+                                                <TabPane key={`${index + 1}`} tabId={`${index + 1}`} className=''>
+                                                    <Row className='align-items-center '>
+                                                        <div className="col-xl-4">
+                                                            <div className="tab_item">
+                                                                <img
+                                                                    className={"tab_item-img"}
+                                                                    src={`${item.image}`}
+                                                                    alt=""
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-8">
+                                                            <div className="tab_desc">
+                                                                <h3 className="tab_desc-title">
+                                                                    <span className="text-uppercase">{item.title}</span>
+                                                                </h3>
+                                                                <p className="tab_desc-text">
+                                                                    {item.desc}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </Row>
+                                                </TabPane>
+                                            </>
+                                        )
+                                    })}
+
+                                </TabContent>
                             </div>
                         </div>
                     </div>
