@@ -27,7 +27,7 @@ const Footer = () => {
                             <a href="!#" className="footer_2_a">{getText("navbar1")}</a>
                             <a href="!#" className="footer_2_a">{getText("navbar2")}</a>
                             <a href="!#" className="footer_2_a">{getText("navbar3")}</a>
-                            <Link to='/admin' href="!#" className="footer_2_a">{getText("navbar4")}</Link>
+                            <Link to='/admin-seentex-group-official-uz' className="footer_2_a">{getText("navbar4")}</Link>
                         </div>
                         <div className="col-lg-4 footer_link_2">
                             <h3 className='mb-5'>{getText("footer2")}</h3>
