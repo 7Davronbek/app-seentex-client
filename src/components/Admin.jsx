@@ -321,7 +321,7 @@ const Admin = () => {
                                                 >
                                                     <input onChange={e => setT(e.target.files[0])} type="file" />
                                                     <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Uz Title' name='title' />
-                                                    <input value={title_ru}  onChange={e => setTitle_ru(e.target.value)}type="text" placeholder='Ru Title' name='title_ru' />
+                                                    <input value={title_ru} onChange={e => setTitle_ru(e.target.value)} type="text" placeholder='Ru Title' name='title_ru' />
                                                     <textarea value={desc} onChange={e => setDesc(e.target.value)} name="desc" placeholder='Description Uz' cols="30" rows="10"></textarea>
                                                     <textarea value={desc_ru} onChange={e => setDesc_ru(e.target.value)} name="desc_ru" placeholder='Description Ru' cols="30" rows="10"></textarea>
                                                     <button type='submit'>Send</button>
@@ -334,17 +334,24 @@ const Admin = () => {
                                             return (
                                                 <>
                                                     <div key={index.toString()} className="col-lg-4  mt-4 h-100">
-                                                        <div className="cards h-auto">
+                                                        <div className="cards tasbsCard h-auto">
                                                             <img className='w-100 h-100' src={item.image} alt="" />
-                                                            <h3 className='d-flex align-items-center'><h6>uz</h6> {item.title}</h3>
-                                                            <h3 className='d-flex align-items-center'><h6>ru</h6> {item.title_ru}</h3>
-                                                            {/* {desc && desc.map((item2, index2) => {
+                                                            <h3 className='d-flex align-items-center'><span>uz:</span> {item.title}</h3>
+                                                            <h3 className='d-flex align-items-center'><span>ru:</span> {item.title_ru}</h3>
+                                                            {item.desc && item.desc.map((item2, index2) => {
                                                                 return (
                                                                     <>
-                                                                        <p key={index2.toString()}>{item2}</p>
+                                                                        <p key={index2.toString()}><span>uz:</span> {item2}</p>
                                                                     </>
                                                                 )
-                                                            })} */}
+                                                            })}
+                                                            {item.desc_ru && item.desc_ru.map((item2, index2) => {
+                                                                return (
+                                                                    <>
+                                                                        <p key={index2.toString()}><span>uz:</span> {item2}</p>
+                                                                    </>
+                                                                )
+                                                            })}
                                                             <button onClick={(id => { deleteTabs(item.id) })} className='btn btn-danger ms-auto d-block mt-2'>Delete</button>
                                                         </div>
                                                     </div>
