@@ -1,13 +1,32 @@
 import React, { useState } from 'react'
 import { TabContent, TabPane, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
+import axios from 'axios';
+import { API_PATH } from '../tools/constants';
+import { useEffect } from 'react';
 
 const Tovar = () => {
+    const [tabs, setTabs] = useState([])
     const [activeTab, setActiveTab] = useState('1');
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
+
+    const getTabs = () => {
+        axios.get(API_PATH + 'api/product')
+            .then((res) => {
+                setTabs(res.data)
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        getTabs()
+    }, [])
 
     return (
         <>
