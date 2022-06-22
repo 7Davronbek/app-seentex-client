@@ -1,24 +1,22 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { API_PATH } from '../tools/constants'
 import { TabContent, TabPane, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
-import axios from 'axios';
-import { API_PATH } from '../tools/constants';
-import { useEffect } from 'react';
-import Tovar2 from './Tovar2';
 
-const Tovar = () => {
-    const [tabs, setTabs] = useState([])
+const Tovar2 = () => {
     const [activeTab, setActiveTab] = useState('1');
+    const [tabs2, setTabs2] = useState([])
 
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
-    const getTabs1 = () => {
-        axios.get(API_PATH + 'api/category/1')
+
+    const getTabs2 = () => {
+        axios.get(API_PATH + 'api/category/2')
             .then((res) => {
-                setTabs(res.data.products)
-                console.log(res);
+                setTabs2(res.data.products)
             })
             .catch((err) => {
                 console.log(err);
@@ -26,27 +24,28 @@ const Tovar = () => {
     }
 
     useEffect(() => {
-        getTabs1()
+        getTabs2()
     }, [])
 
     return (
         <>
-            <div className="tovar">
+            <div className="tovar tovar2">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-12 mb-2">
-                            <div className="tovar_text">Категории-Cмесители</div>
-                        </div>
+
+                    <div className="col-12 mt-5 mb-2">
+                        <div className="tovar_text">Категории-Kотельная</div>
                     </div>
-                    <div className="row overflow-hidden">
-                        <img src="/images/tovar_1.png" alt="" className="tovar_img" />
+
+                    <div className="row overflow-hidden mt-5">
+                        <img src="/images/Prim_2.jpg" alt="" className="tovar_img" />
                     </div>
+
                     <div className="row justify-content-center gap-4 gap-xl-0 mt-4">
                         <div className="col-lg-8 col-xl-3">
                             <div className="list-group tab_list" id="list-tab" role="tablist">
 
                                 <NavItem>
-                                    {tabs && tabs.map((item, index) => {
+                                    {tabs2 && tabs2.map((item, index) => {
                                         return (
                                             <>
                                                 <NavLink
@@ -65,7 +64,7 @@ const Tovar = () => {
                         <div className="col-lg-8 col-xl-9">
                             <div className="tab-content tab-pane fade show active tab" id="nav-tabContent">
                                 <TabContent activeTab={activeTab}>
-                                    {tabs && tabs.map((item, index) => {
+                                    {tabs2 && tabs2.map((item, index) => {
                                         return (
                                             <>
                                                 <TabPane key={`${index + 1}`} tabId={`${index + 1}`} className=''>
@@ -101,9 +100,8 @@ const Tovar = () => {
                     </div>
                 </div>
             </div>
-            <Tovar2 />
         </>
     )
 }
 
-export default Tovar
+export default Tovar2

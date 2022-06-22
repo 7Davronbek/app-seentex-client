@@ -59,6 +59,11 @@ const Admin = () => {
         axios.post(API_PATH + 'api/product', formData, config)
             .then((res) => {
                 getTabs()
+                setTitle('')
+                setTitle_ru('')
+                setCategory('')
+                setDesc('')
+                setDesc_ru('')
             })
             .catch((err) => {
                 console.log(err);
@@ -332,7 +337,7 @@ const Admin = () => {
                                             return (
                                                 <>
                                                     <div key={index.toString()} className="col-lg-6  mt-4 h-100">
-                                                        <div className="cards tasbsCard h-auto">
+                                                        <div className="cards px-3 py-2 border shadow tasbsCard h-auto">
                                                             <h6>Category: {item.category}</h6>
                                                             <img className='w-100 h-100' src={item.image} alt="" />
                                                             <h3 className='d-flex align-items-center'><span>uz:</span> {item.title}</h3>
