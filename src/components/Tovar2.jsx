@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { API_PATH } from '../tools/constants'
+import { API_PATH, LANGUAGE } from '../tools/constants'
 import { TabContent, TabPane, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -52,7 +52,7 @@ const Tovar2 = () => {
                                                     key={`${index + 1}`}
                                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
                                                     onClick={() => { toggle(`${index + 1}`) }} >
-                                                    {item.title}
+                                                    {localStorage.getItem(LANGUAGE === "uz") ? item.title : item.title_ru}
                                                 </NavLink>
                                             </>
                                         )
@@ -81,10 +81,10 @@ const Tovar2 = () => {
                                                         <div className="col-xl-8">
                                                             <div className="tab_desc">
                                                                 <h3 className="tab_desc-title">
-                                                                    <span className="text-uppercase">{item.title}</span>
+                                                                    {localStorage.getItem(LANGUAGE === "uz") ? <span className="text-uppercase">{item.title}</span> : <span className="text-uppercase">{item.title_ru}</span>}
                                                                 </h3>
                                                                 <p className="tab_desc-text">
-                                                                    {item.desc}
+                                                                    {localStorage.getItem(LANGUAGE === "uz") ? item.desc : item.desc_ru}
                                                                 </p>
                                                             </div>
                                                         </div>

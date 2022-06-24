@@ -352,7 +352,7 @@ const Admin = () => {
                                                             {item.desc_ru && item.desc_ru.map((item2, index2) => {
                                                                 return (
                                                                     <>
-                                                                        <p key={index2.toString()}><span>uz:</span> {item2}</p>
+                                                                        <p key={index2.toString()}><span>ru:</span> {item2}</p>
                                                                     </>
                                                                 )
                                                             })}
