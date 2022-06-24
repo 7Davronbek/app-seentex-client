@@ -18,7 +18,6 @@ const Tovar = () => {
         axios.get(API_PATH + 'api/category/1')
             .then((res) => {
                 setTabs(res.data.products)
-                console.log(res);
             })
             .catch((err) => {
                 console.log(err);
