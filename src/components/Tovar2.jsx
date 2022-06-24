@@ -52,7 +52,7 @@ const Tovar2 = () => {
                                                     key={`${index + 1}`}
                                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
                                                     onClick={() => { toggle(`${index + 1}`) }} >
-                                                    {localStorage.getItem(LANGUAGE === "uz") ? item.title : item.title_ru}
+                                                    {localStorage.getItem(LANGUAGE) === "uz" ? item.title : item.title_ru}
                                                 </NavLink>
                                             </>
                                         )
@@ -81,10 +81,10 @@ const Tovar2 = () => {
                                                         <div className="col-xl-8">
                                                             <div className="tab_desc">
                                                                 <h3 className="tab_desc-title">
-                                                                    {localStorage.getItem(LANGUAGE === "uz") ? <span className="text-uppercase">{item.title}</span> : <span className="text-uppercase">{item.title_ru}</span>}
+                                                                    {localStorage.getItem(LANGUAGE) === "uz" ? <span className="text-uppercase">{item.title}</span> : <span className="text-uppercase">{item.title_ru}</span>}
                                                                 </h3>
                                                                 <p className="tab_desc-text">
-                                                                    {localStorage.getItem(LANGUAGE === "uz") ? item.desc : item.desc_ru}
+                                                                    {localStorage.getItem(LANGUAGE) === "uz" ? item.desc : item.desc_ru}
                                                                 </p>
                                                             </div>
                                                         </div>

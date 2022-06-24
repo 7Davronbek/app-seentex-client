@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TabContent, TabPane, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
 import axios from 'axios';
-import { API_PATH } from '../tools/constants';
+import { API_PATH, LANGUAGE } from '../tools/constants';
 import { useEffect } from 'react';
 import Tovar2 from './Tovar2';
 
@@ -53,7 +53,8 @@ const Tovar = () => {
                                                     key={`${index + 1}`}
                                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
                                                     onClick={() => { toggle(`${index + 1}`) }} >
-                                                    {item.title}
+                                                    {localStorage.getItem(LANGUAGE) === "uz" ? item.title : item.title_ru}
+                                                    {/* {item.title} */}
                                                 </NavLink>
                                             </>
                                         )
@@ -82,10 +83,13 @@ const Tovar = () => {
                                                         <div className="col-xl-8">
                                                             <div className="tab_desc">
                                                                 <h3 className="tab_desc-title">
-                                                                    <span className="text-uppercase">{item.title}</span>
+
+                                                                    {localStorage.getItem(LANGUAGE) === "uz" ? <span className="text-uppercase">{item.title}</span> : <span className="text-uppercase">{item.title_ru}</span>}
+                                                                    {/* <span className="text-uppercase">{item.title}</span> */}
                                                                 </h3>
                                                                 <p className="tab_desc-text">
-                                                                    {item.desc}
+                                                                    {localStorage.getItem(LANGUAGE) === "uz" ? item.desc : item.desc_ru}
+                                                                    {/* {item.desc} */}
                                                                 </p>
                                                             </div>
                                                         </div>
