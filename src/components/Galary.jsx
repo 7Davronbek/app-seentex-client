@@ -37,7 +37,7 @@ const Galary = () => {
 
                         {galary && galary.map((item, index) => (
                             <>
-                                <div key={index} className="col-md-3 col-lg-3 col-sm-6 gallery_box">
+                                <div key={item.id} className="col-md-3 col-lg-3 col-sm-6 gallery_box">
                                     <img src={item.image} className="gallery_img" alt="" />
                                 </div>
                             </>

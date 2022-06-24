@@ -54,7 +54,7 @@ const Companies = () => {
                     {client && client.map((item, index) => {
                         return (
                             <>
-                                <SwiperSlide key={index.toString()}>
+                                <SwiperSlide key={item.id}>
                                     <div className="swiper-slide">
                                         <img src={item.image} alt="" />
                                     </div>

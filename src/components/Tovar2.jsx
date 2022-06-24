@@ -49,7 +49,7 @@ const Tovar2 = () => {
                                         return (
                                             <>
                                                 <NavLink
-                                                    key={`${item.id}`}
+                                                    key={item.id}
                                                     className={`list-group-item list-group-item-action tab_list-link ` + classnames({ active: activeTab === `${index + 1}` })}
                                                     onClick={() => { toggle(`${index + 1}`) }} >
                                                     {localStorage.getItem(LANGUAGE) === "uz" ? item.title : item.title_ru}
@@ -67,7 +67,7 @@ const Tovar2 = () => {
                                     {tabs2 && tabs2.map((item, index) => {
                                         return (
                                             <>
-                                                <TabPane key={`${item.id}`} tabId={`${index + 1}`} className=''>
+                                                <TabPane key={item.id} tabId={`${index + 1}`} className=''>
                                                     <Row className='align-items-center '>
                                                         <div className="col-xl-4">
                                                             <div className="tab_item">
